@@ -1,4 +1,4 @@
-import { Check, ArrowRight, AlertTriangle, Phone, MapPin, Square, X, TrendingUp, Users, Wallet, Sparkles, Gift, MessageCircle, Map, BarChart3, PhoneCall, BadgeCheck, Award, Building2, Megaphone, Inbox, Stethoscope, UserPlus, Receipt } from "lucide-react";
+import { Check, ArrowRight, AlertTriangle, Phone, MapPin, Square, X, TrendingUp, Wallet, Sparkles, Gift, MessageCircle, Map, BarChart3, PhoneCall, BadgeCheck, Megaphone, Inbox, Target, UserPlus, Receipt } from "lucide-react";
 import Section from "@/components/landing/Section";
 import Banner from "@/components/landing/Banner";
 import WhatsAppButton from "@/components/landing/WhatsAppButton";
@@ -16,19 +16,19 @@ const Index = () => {
             Проверенная методика
           </p>
           <p className="mt-1 text-primary-foreground font-sans font-semibold sm:text-xl md:text-2xl">
-            для реабилитационных центров
+            для бизнеса в Казахстане
           </p>
         </div>
 
         {/* Главный заголовок */}
         <h1 className="mt-4 text-center font-extrabold uppercase leading-[1.1] tracking-tight sm:mt-10 sm:text-4xl md:text-5xl whitespace-pre-line text-xl">
-          ИЩУ 2-Х ВЛАДЕЛЬЦЕВ РЕАБИЛИТАЦИОННЫХ ЦЕНТРОВ, КОТОРЫЕ ХОТЯТ СТАБИЛЬНЫЙ ПОТОК ПЕРВИЧНЫХ ПАЦИЕНТОВ,{"\n"}И ПОЛНОСТЬЮ ЗАПОЛНИТЬ ГРАФИК ВСЕХ СПЕЦИАЛИСТОВ
+          ИЩУ 2-Х ВЛАДЕЛЬЦЕВ БИЗНЕСА В КАЗАХСТАНЕ, КОТОРЫЕ ХОТЯТ СТАБИЛЬНЫЙ ПОТОК КЛИЕНТОВ{"\n"}И СИСТЕМНЫЙ РОСТ ВЫРУЧКИ БЕЗ ХАОСА В ОТДЕЛЕ ПРОДАЖ
         </h1>
 
         {/* Синий баннер */}
         <div className="mt-3 sm:mt-10">
           <Banner className="px-3 py-4 sm:px-6 sm:py-6 text-base">
-            КОТОРЫЕ УСТАЛИ РАБОТАТЬ ЗА&nbsp;КОПЕЙКИ И&nbsp;ХОТЯТ ВЫЙТИ НА&nbsp;ДОХОД ОТ&nbsp;500&nbsp;000 В&nbsp;ДЕНЬ, ИМЕЯ БОЛЬШЕ СВОБОДНОГО ВРЕМЕНИ И&nbsp;МЕНЬШЕ СТРЕССА
+            КОТОРЫЕ УСТАЛИ СЛИВАТЬ БЮДЖЕТ НА&nbsp;РЕКЛАМУ И&nbsp;ХОТЯТ ВЫЙТИ НА&nbsp;ДОХОД ОТ&nbsp;500&nbsp;000&nbsp;₸ В&nbsp;ДЕНЬ, ИМЕЯ БОЛЬШЕ СВОБОДНОГО ВРЕМЕНИ И&nbsp;МЕНЬШЕ СТРЕССА
           </Banner>
         </div>
 
@@ -36,7 +36,7 @@ const Index = () => {
         <div className="mt-1 sm:mt-4">
           <img
             src={heroLaptop}
-            alt="Система «Врач на миллион» — превращение первичных заявок в пациентов реабилитационного центра"
+            alt="Система «Бизнес на миллион» — превращение заявок в платёжеспособных клиентов"
             width={1024}
             height={1024}
             className="mx-auto block w-full max-w-[360px] sm:max-w-md"
@@ -61,12 +61,12 @@ const Index = () => {
 
           <ul className="mx-auto mt-6 max-w-md space-y-5">
             {[
-              "Устали работать и нанимать разных таргетологов, SMMщиков, которые обещают результат, но пациентов нет и нет",
-              "Видите, как ваши коллеги успешно зарабатывают и путешествуют, а вы смотрите на них и не понимаете ЧТО ДЕЛАЕТЕ НЕ ТАК",
-              "Вынуждены цепляться за каждого пациента, даже на невыгодных условиях и работаете в минус",
-              "Не знаете, как привлекать пациентов на полные курсы реабилитации и выйти из ловушки разовых дешёвых приёмов?",
-              "Больше всего надоело, что пациенты уходят к конкурентам,\nа вы не понимаете почему",
-              "Хотите создать систему, при которой пациенты приходят сами, а специалисты только ведут реабилитацию",
+              "Устали нанимать таргетологов и SMMщиков, которые обещают клиентов и продажи, но в кассе ничего не меняется",
+              "Видите, как конкуренты растут и масштабируются, а ваша выручка топчется на месте — и не понимаете, что вы делаете не так",
+              "Цепляетесь за каждого клиента, даёте скидки и работаете с минимальной маржой, лишь бы не потерять заказ",
+              "Не понимаете, как стабильно привлекать клиентов и перестать зависеть от сарафанного радио и сезонности",
+              "Больше всего бесит, что клиенты уходят к конкурентам,\nа вы не понимаете почему",
+              "Хотите систему, при которой клиенты приходят сами, а сотрудники только закрывают сделки и обслуживают",
             ].map((item, i) => (
               <li key={i} className="flex gap-3">
                 <Square
@@ -88,8 +88,8 @@ const Index = () => {
           Если ответили «ДА» хотя&nbsp;бы на&nbsp;1&nbsp;вопрос — записывайтесь на&nbsp;диагностику
         </Banner>
         <p className="mt-5 text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Я расскажу, как забыть о&nbsp;работе за&nbsp;копейки и&nbsp;начать зарабатывать как лучшие реабилитационные
-          центры Казахстана, имея больше свободного времени и&nbsp;энергии.
+          Я расскажу, как забыть о&nbsp;работе за&nbsp;копейки и&nbsp;начать зарабатывать как топовые компании
+          Казахстана, имея больше свободного времени и&nbsp;энергии.
         </p>
         <div className="mt-6">
           <WhatsAppButton label="Записаться на диагностику" />
@@ -110,13 +110,13 @@ const Index = () => {
             <div className="relative overflow-hidden rounded-2xl border bg-card shadow-xl">
               <img
                 src={yuriPhoto}
-                alt="Юрий — автор системы «Врач на миллион»"
+                alt="Юрий — автор системы «Бизнес на миллион»"
                 className="block w-full object-cover"
               />
               <div className="border-t bg-card px-4 py-3">
                 <p className="text-sm font-bold leading-tight">Юрий</p>
                 <p className="text-xs text-muted-foreground">
-                  Работаю по системе «Врач на миллион»
+                  Работаю по системе «Бизнес на миллион»
                 </p>
               </div>
             </div>
@@ -130,17 +130,18 @@ const Index = () => {
             </h2>
 
             <p className="mt-4 text-base leading-relaxed sm:text-lg">
-              Я прошёл путь от маркетолога, который запускает рекламу для стоматологий, медицинских
-              и реабилитационных центров, до эксперта, который создал систему, по которой
-              реабилитационные центры получают не просто заявки, а именно{" "}
-              <span className="font-semibold">«платежеспособных» пациентов</span>.
+              Я прошёл путь от маркетолога, который запускает рекламу для бизнеса разных ниш в
+              Казахстане — от автосалонов и мебельных салонов до клиник и косметологий — до
+              эксперта, который создал систему, по которой компании получают не просто заявки,
+              а именно{" "}
+              <span className="font-semibold">«платёжеспособных» клиентов</span>.
             </p>
 
             <p className="mt-4 text-base leading-relaxed sm:text-lg">
-              Я помогаю реабилитационным центрам вырваться из замкнутого круга и выйти на доход{" "}
+              Я помогаю владельцам бизнеса вырваться из замкнутого круга и выйти на доход{" "}
               <span className="font-semibold text-accent-deep">от 500 000 тенге в день</span>{" "}
-              через систему «Врач на миллион» — ту самую систему, которая изменила жизнь уже{" "}
-              <span className="font-semibold">25+ реабилитационным центрам</span>.
+              через систему «Бизнес на миллион» — ту самую систему, которая изменила результаты уже{" "}
+              <span className="font-semibold">25+ компаниям</span> в разных нишах.
             </p>
 
           </div>
@@ -155,7 +156,7 @@ const Index = () => {
         </div>
         <h2 className="text-center font-bold leading-tight sm:text-3xl text-xl">
           цифры{" "}
-          <span className="text-accent-deep">из реальных клиник</span>
+          <span className="text-accent-deep">из реального бизнеса</span>
         </h2>
         <p className="mt-3 text-center text-base text-muted-foreground sm:text-lg">
           Разные города, разные ниши, одна система.
@@ -166,7 +167,7 @@ const Index = () => {
           <div className="border-b bg-accent-soft/40 px-6 py-4 sm:px-8">
             <div className="flex items-center justify-center gap-2 text-center font-semibold text-accent-deep">
               <MapPin className="h-5 w-5 shrink-0" />
-              <span className="text-lg sm:text-xl">Реабилитационный центр из Алматы</span>
+              <span className="text-lg sm:text-xl">Компания из Алматы</span>
             </div>
           </div>
 
@@ -177,7 +178,7 @@ const Index = () => {
                 Было
               </p>
               <p className="mt-2 text-base leading-relaxed sm:text-lg">
-                Один администратор не справлялся со звонками. Записывал всех подряд приходило только <span className="font-bold text-destructive">30%</span> от записанных.
+                Один менеджер не справлялся со звонками. Записывал всех подряд — доходило до сделки только <span className="font-bold text-destructive">30%</span> от заявок.
               </p>
             </div>
 
@@ -187,9 +188,9 @@ const Index = () => {
             </h3>
             <ul className="mx-auto mt-4 max-w-md space-y-3">
               {[
-                "Вывели 2 девушек в отдельный колл-центр",
-                "Обучили скриптам продаж первичных консультаций",
-                "Поставили задачу: продать первичный приём с предоплатой курса реабилитации",
+                "Вывели 2 сотрудников в отдельный отдел продаж",
+                "Обучили скриптам продаж и работе с возражениями",
+                "Поставили задачу: довести клиента до оплаты, а не просто записать",
               ].map((item, i) => (
                 <li
                   key={i}
@@ -215,8 +216,8 @@ const Index = () => {
                 {[
                   { icon: Megaphone, value: "830 000 ₸", label: "Расходы на рекламу" },
                   { icon: Inbox, value: "415", label: "Заявок с рекламы" },
-                  { icon: Stethoscope, value: "83", label: "Платных диагностик" },
-                  { icon: UserPlus, value: "29", label: "Новых пациентов" },
+                  { icon: Target, value: "83", label: "Целевых заявок" },
+                  { icon: UserPlus, value: "29", label: "Новых клиентов" },
                 ].map((m, i) => (
                   <div key={i} className="rounded-xl bg-white/10 p-3">
                     <m.icon className="mx-auto h-5 w-5 text-highlight" />
@@ -253,9 +254,9 @@ const Index = () => {
 
             {/* Вывод */}
             <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Тот же бюджет на рекламу в{" "}
+              Тот же бюджет на рекламу — в{" "}
               <span className="font-bold text-foreground">3 раза больше</span>{" "}
-              реально пришедших и оплативших пациентов.
+              реально пришедших и оплативших клиентов.
             </p>
             <p className="mt-3 text-center text-base font-semibold leading-snug sm:text-lg">
               В чём разница?{" "}
@@ -264,32 +265,56 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Ещё 3 кейса — компактная сетка */}
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {/* Ещё кейсы из разных ниш — компактная сетка */}
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              city: "Астана",
-              niche: "Стоматология",
+              city: "Алматы",
+              niche: "Медицинская клиника",
               result: "+8 400 000 ₸",
               period: "за 2 месяца",
               before: "22% доходимости с заявок",
-              after: "61% доходимости, график докторов забит на 3 недели вперёд",
+              after: "61% доходимости, график врачей забит на 3 недели вперёд",
+            },
+            {
+              city: "Астана",
+              niche: "Центр реабилитации",
+              result: "+13 000 000 ₸",
+              period: "за 3 месяца",
+              before: "пациенты приходили только по сарафану",
+              after: "стабильный поток первичных + полные курсы реабилитации",
             },
             {
               city: "Шымкент",
-              niche: "Многопрофильный центр",
-              result: "+18 200 000 ₸",
-              period: "за 4 месяца",
-              before: "собственник лично закрывал заявки по вечерам",
-              after: "колл-центр работает без участия владельца, +47 первичных/мес",
-            },
-            {
-              city: "Караганда",
               niche: "Косметология",
               result: "x2.4 к выручке",
               period: "за 3 месяца",
-              before: "повторных пациентов почти не было",
-              after: "64% записываются на повторный приём ещё до выхода из кабинета",
+              before: "повторных клиентов почти не было",
+              after: "64% записываются на повторную процедуру ещё в кабинете",
+            },
+            {
+              city: "Караганда",
+              niche: "Мебельный салон",
+              result: "+18 200 000 ₸",
+              period: "за 4 месяца",
+              before: "собственник лично закрывал клиентов по вечерам",
+              after: "отдел продаж работает без участия владельца, +47 сделок/мес",
+            },
+            {
+              city: "Алматы",
+              niche: "Автосервис",
+              result: "x3 к записи",
+              period: "за 2 месяца",
+              before: "мастера простаивали по 3-4 часа в день",
+              after: "запись забита на неделю вперёд, средний чек +40%",
+            },
+            {
+              city: "Астана",
+              niche: "Автодом Toyota / Lexus",
+              result: "+27 авто/мес",
+              period: "за 3 месяца",
+              before: "менеджеры теряли заявки на этапе тест-драйва",
+              after: "выстроена воронка от заявки до выдачи ключей, конверсия x2",
             },
           ].map((c, i) => (
             <div
@@ -341,8 +366,8 @@ const Index = () => {
             60 000 000 ₸
           </p>
           <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
-            Выстроили стабильную систему привлечения первичных пациентов и их удержания&nbsp;
-            <span className="font-semibold text-white">без участия собственника центра</span>.
+            Выстроили стабильную систему привлечения клиентов и продаж&nbsp;
+            <span className="font-semibold text-white">без участия собственника</span>.
           </p>
         </div>
       </Section>
@@ -353,8 +378,8 @@ const Index = () => {
           <h2 className="text-center text-2xl font-extrabold sm:text-3xl">Никакого подвоха нет.</h2>
           <p className="mt-4 text-center text-base leading-relaxed sm:text-lg">
             Мы проводим консультации, чтобы показать <span className="font-bold">вам свой</span> метод
-            ежедневного привлечения платёжеспособных пациентов на полные курсы реабилитации
-            (неврология, ортопедия, постоперационное восстановление и т.д.).
+            ежедневного привлечения платёжеспособных клиентов в любой нише — от услуг и торговли
+            до автодомов, клиник и салонов.
           </p>
           <p className="mt-4 text-center text-base leading-relaxed sm:text-lg">
             Если после консультации вы захотите, <span className="font-bold">чтобы мы помогли</span> выйти на
@@ -382,7 +407,7 @@ const Index = () => {
             <h2 className="text-center font-extrabold uppercase leading-[1.15] tracking-tight text-lg sm:text-2xl md:text-3xl">
               Если ты хочешь забыть о&nbsp;работе за&nbsp;копейки
               <br className="hidden sm:block" />
-              <span className="text-highlight"> и&nbsp;начать зарабатывать как топовый реабилитационный центр</span>,
+              <span className="text-highlight"> и&nbsp;начать зарабатывать как топовая компания в&nbsp;своей нише</span>,
               <br className="hidden sm:block" />
               имея больше времени и&nbsp;энергии —
             </h2>
@@ -396,7 +421,7 @@ const Index = () => {
                 .
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/75 sm:text-base">
-                Без системы вы будете и&nbsp;дальше терять пациентов и&nbsp;деньги.
+                Без системы вы будете и&nbsp;дальше терять клиентов и&nbsp;деньги.
               </p>
             </div>
           </div>
@@ -414,7 +439,7 @@ const Index = () => {
           <span className="text-accent-deep">с диагностикой</span>
         </h2>
         <p className="mt-3 text-center text-base text-muted-foreground sm:text-lg whitespace-pre-line">
-          Найдём все дыры, через которые утекают{"\n"}ваши пациенты и деньги.
+          Найдём все дыры, через которые утекают{"\n"}ваши клиенты и деньги.
         </p>
 
         <ul className="mt-7 space-y-4">
@@ -422,7 +447,7 @@ const Index = () => {
             {
               icon: MessageCircle,
               title: "Часовая консультация\n1 на 1 со мной",
-              desc: "Покажу, как привлекать первичных пациентов с бюджетами от 300 000 тенге без бесконечного поиска и сарафанного радио",
+              desc: "Покажу, как привлекать платёжеспособных клиентов с чеком от 100 000 тенге без бесконечного поиска и сарафанного радио",
               value: "150 000 ₸",
             },
             {
@@ -434,13 +459,13 @@ const Index = () => {
             {
               icon: BarChart3,
               title: "Анализ рекламы и каналов привлечения",
-              desc: "Разберём текущие источники пациентов и точки утечки бюджета",
+              desc: "Разберём текущие источники клиентов и точки утечки бюджета",
               value: "60 000 ₸",
             },
             {
               icon: PhoneCall,
               title: "Тайный звонок",
-              desc: "Прозвоним как пациент, запишем разговор, покажем, где администратор сливает заявки",
+              desc: "Прозвоним как клиент, запишем разговор, покажем, где менеджер сливает заявки",
               value: "50 000 ₸",
             },
           ].map((item, i) => {
@@ -475,7 +500,7 @@ const Index = () => {
         <div className="mt-8 overflow-hidden rounded-2xl bg-banner text-white shadow-xl">
           <div className="px-6 py-7 text-center sm:px-8 sm:py-8">
             <p className="text-base font-semibold leading-relaxed text-white sm:text-lg">
-              Запишитесь на диагностику центра
+              Запишитесь на диагностику бизнеса
             </p>
             <p className="mt-2 text-sm text-white/80">{"\n"}</p>
             <div className="mt-5">
@@ -504,10 +529,10 @@ const Index = () => {
           <AlertTriangle className="h-6 w-6 shrink-0 text-accent-deep" />
           <div className="flex-1 text-center">
             <p className="text-base font-semibold leading-snug sm:text-lg">
-              Важно: делаем максимум 2 исследования в неделю.
+              Важно: делаем максимум 2 диагностики в неделю.
             </p>
             <p className="mt-2 text-base leading-snug text-muted-foreground sm:text-lg">
-              И только с одним центром в городе.
+              И только с одной компанией в нише в городе.
             </p>
           </div>
         </div>
@@ -590,7 +615,7 @@ const Index = () => {
         <div className="mt-6">
           <WhatsAppButton
             variant="cta-orange"
-            label="🔗 ХОЧУ ПОЛУЧИТЬ ДОСТУП К СИСТЕМЕ «ВРАЧ НА МИЛЛИОН»"
+            label="🔗 ХОЧУ ПОЛУЧИТЬ ДОСТУП К СИСТЕМЕ «БИЗНЕС НА МИЛЛИОН»"
             className="uppercase"
           />
         </div>
@@ -602,10 +627,10 @@ const Index = () => {
           <p>
             <span className="font-bold">Завтра свободных мест может не быть.</span>
             <br />
-            Я беру 1 центр и только один в городе.
+            Я беру 1 компанию и только одну в нише в городе.
           </p>
           <p>
-            Если вы всё ещё думаете - просто представьте,
+            Если вы всё ещё думаете — просто представьте,
             где будете через год, когда узнаете,{" "}
             <span className="font-bold">что мои клиенты уже делают по 20+ миллионов</span>.
           </p>
@@ -613,7 +638,7 @@ const Index = () => {
             <ArrowRight className="mt-1 h-5 w-5 shrink-0 text-banner" />
             <p className="font-medium">
               Помните: пока вы думаете, ваши конкуренты внедряют системы продаж и забирают
-              ваших пациентов.
+              ваших клиентов.
             </p>
           </div>
         </div>
@@ -624,7 +649,7 @@ const Index = () => {
         <div>
           <WhatsAppButton
             variant="cta-orange"
-            label="🔗 ХОЧУ ПОЛУЧИТЬ ДОСТУП К СИСТЕМЕ «ВРАЧ НА МИЛЛИОН»"
+            label="🔗 ХОЧУ ПОЛУЧИТЬ ДОСТУП К СИСТЕМЕ «БИЗНЕС НА МИЛЛИОН»"
             className="uppercase"
           />
         </div>
@@ -635,7 +660,7 @@ const Index = () => {
           <Phone className="h-3.5 w-3.5" />
           WhatsApp: +7 747 284 25 95
         </p>
-        <p className="mt-2">© {new Date().getFullYear()} Система «Врач на миллион»</p>
+        <p className="mt-2">© {new Date().getFullYear()} Система «Бизнес на миллион»</p>
       </footer>
     </main>
   );
