@@ -362,13 +362,11 @@ const Index = () => {
           <h2 className="text-center text-2xl font-extrabold sm:text-3xl">Никакого подвоха нет.</h2>
           <p className="mt-4 text-center text-base leading-relaxed sm:text-lg">
             Мы проводим консультации, чтобы показать <span className="font-bold">вам свой</span> метод
-            ежедневного привлечения платёжеспособных клиентов в любой нише — от услуг и торговли
-            до автодомов, клиник и салонов.
+            ежедневного привлечения платёжеспособных клиентов.
           </p>
           <p className="mt-4 text-center text-base leading-relaxed sm:text-lg">
-            Если после консультации вы захотите, <span className="font-bold">чтобы мы помогли</span> выйти на
-            доход от 500 000 тенге в день с помощью моего метода — то сможете продолжить работу со мной
-            на платной основе. Консультация вас ни к чему не обязывает.
+            Если после консультации вы захотите, <span className="font-bold">чтобы мы помогли</span> вам увеличить выручку
+            с помощью моего метода то сможем обсудить условия сотрудничества. Консультация вас ни к чему не обязывает.
           </p>
           <p className="mt-5 text-center text-lg font-bold sm:text-xl">Да-да, нет-нет.</p>
           <p className="mt-2 text-center text-lg font-bold sm:text-xl">ВСЁ по ЧЕСТНОМУ 🤝</p>
