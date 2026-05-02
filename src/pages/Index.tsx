@@ -356,22 +356,6 @@ const Index = () => {
         </p>
       </Section>
 
-      {/* 6. РЕЗУЛЬТАТ */}
-      <Section>
-        <div className="rounded-2xl bg-banner p-7 text-center text-white sm:p-10">
-          <p className="text-sm font-semibold uppercase tracking-wider text-highlight">
-            За 3 месяца
-          </p>
-          <p className="mt-4 text-4xl font-extrabold leading-none text-highlight sm:text-6xl">
-            60 000 000 ₸
-          </p>
-          <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
-            Выстроили стабильную систему привлечения клиентов и продаж&nbsp;
-            <span className="font-semibold text-white">без участия собственника</span>.
-          </p>
-        </div>
-      </Section>
-
       {/* 7. СКЕПСИС */}
       <Section tone="muted">
         <div className="rounded-2xl border-2 border-destructive/70 bg-background p-6 sm:p-8">
