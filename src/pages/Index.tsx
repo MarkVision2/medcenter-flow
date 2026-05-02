@@ -386,26 +386,31 @@ const Index = () => {
               Главное
             </div>
 
-            <h2 className="text-center font-extrabold uppercase leading-[1.15] tracking-tight text-lg sm:text-2xl md:text-3xl">
-              ЕСЛИ ТЫ ХОЧЕШЬ ЗАБЫТЬ О&nbsp;РАБОТЕ ЗА&nbsp;КОПЕЙКИ
-              <br className="hidden sm:block" />
-              <span className="text-highlight"> И&nbsp;НАЧАТЬ ЗАРАБАТЫВАТЬ КАК ТОПОВАЯ КОМПАНИЯ В&nbsp;СВОЕЙ НИШЕ</span>,
-              <br className="hidden sm:block" />
-              ИМЕЯ БОЛЬШЕ СВОБОДНОГО ВРЕМЕНИ И&nbsp;ЭНЕРГИИ
+            <h2 className="text-center font-extrabold leading-[1.15] tracking-tight text-2xl sm:text-3xl md:text-4xl">
+              Хотите перестать работать за&nbsp;копейки и&nbsp;зарабатывать как{" "}
+              <span className="text-highlight">топовая компания в&nbsp;своей нише?</span>
             </h2>
 
-            <div className="mx-auto mt-7 max-w-md rounded-2xl border border-white/15 bg-white/10 p-5 text-center backdrop-blur-sm">
-              <p className="text-base leading-relaxed sm:text-lg">
-                Это требует{" "}
-                <span className="rounded-md bg-highlight/25 px-1.5 py-0.5 font-bold text-highlight">
-                  системного подхода
-                </span>
-                .
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-white/75 sm:text-base">
-                Без системы вы будете и&nbsp;дальше терять клиентов и&nbsp;деньги.
+            <p className="mx-auto mt-5 max-w-md text-center text-base leading-relaxed text-white/75 sm:text-lg">
+              Иметь больше свободного времени, энергии
+              <br className="hidden sm:block" />
+              и&nbsp;стабильный поток клиентов.
+            </p>
+
+            <div className="mx-auto my-8 h-px w-16 bg-white/30" />
+
+            <div className="text-center">
+              <p className="text-base text-white/85 sm:text-lg">Для&nbsp;этого нужен</p>
+              <p className="mt-3 font-extrabold uppercase leading-[0.95] tracking-tight text-highlight text-5xl sm:text-6xl md:text-7xl">
+                Системный
+                <br />
+                подход
               </p>
             </div>
+
+            <p className="mx-auto mt-7 max-w-md text-center text-sm leading-relaxed text-white/75 sm:text-base">
+              Без системы вы продолжите терять клиентов и&nbsp;деньги каждый день.
+            </p>
           </div>
         </div>
       </Section>
