@@ -85,7 +85,7 @@ const Index = () => {
       {/* 3. ПЕРЕХОД */}
       <Section>
         <Banner>
-          Если ответили «ДА» хотя&nbsp;бы на&nbsp;1&nbsp;вопрос — записывайтесь на&nbsp;диагностику
+          ЕСЛИ ОТВЕТИЛИ «ДА» ХОТЯ&nbsp;БЫ НА&nbsp;1&nbsp;ВОПРОС ЗАПИСЫВАЙТЕСЬ НА&nbsp;ДИАГНОСТИКУ
         </Banner>
         <p className="mt-5 text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
           Я расскажу, как забыть о&nbsp;работе за&nbsp;копейки и&nbsp;начать зарабатывать как топовые компании
