@@ -605,23 +605,49 @@ const Index = () => {
 
       {/* 14. ДОЖИМ */}
       <Section tone="muted">
-        <div className="space-y-4 text-center text-base leading-relaxed sm:text-lg">
-          <p>
-            <span className="font-bold">Завтра свободных мест может не быть.</span>
-            <br />
-            Я беру 1 компанию и только одну в нише в городе.
-          </p>
-          <p>
-            Если вы всё ещё думаете — просто представьте,
-            где будете через год, когда узнаете,{" "}
-            <span className="font-bold">что мои клиенты уже делают по 20+ миллионов</span>.
-          </p>
-          <div className="flex items-center gap-3 rounded-xl border-l-4 border-banner bg-background p-4 text-left">
-            <ArrowRight className="mt-1 h-5 w-5 shrink-0 text-banner" />
-            <p className="font-medium">
-              Помните: пока вы думаете, ваши конкуренты внедряют системы продаж и забирают
-              ваших клиентов.
+        <div className="space-y-5">
+          {/* Главный алерт-бейдж */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-banner to-banner/85 p-6 text-banner-foreground shadow-xl sm:p-8">
+            <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+            <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-white/5 blur-3xl" />
+
+            <div className="relative flex items-start gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm">
+                <Clock className="h-5 w-5" />
+              </div>
+              <div className="space-y-2">
+                <p className="text-xl font-extrabold uppercase leading-tight sm:text-2xl">
+                  Завтра свободных мест может не быть
+                </p>
+                <p className="text-sm leading-relaxed text-banner-foreground/90 sm:text-base">
+                  Я беру <span className="font-bold text-highlight">только 1 компанию</span> и только одну в&nbsp;нише в&nbsp;городе.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Представьте через год */}
+          <div className="rounded-2xl border-2 border-dashed border-banner/30 bg-background p-5 text-center sm:p-6">
+            <p className="text-base leading-relaxed sm:text-lg">
+              Если вы всё ещё думаете — просто представьте, где будете через год, когда узнаете, что{" "}
+              <span className="rounded bg-highlight/30 px-1.5 py-0.5 font-bold">
+                мои клиенты уже делают по&nbsp;20+&nbsp;миллионов
+              </span>.
             </p>
+          </div>
+
+          {/* Финальный удар */}
+          <div className="relative overflow-hidden rounded-2xl bg-foreground p-5 text-background sm:p-6">
+            <div className="flex items-start gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-banner">
+                <Flame className="h-5 w-5 text-banner-foreground" />
+              </div>
+              <p className="pt-1 text-base font-medium leading-relaxed sm:text-lg">
+                Пока вы думаете — ваши{" "}
+                <span className="font-extrabold text-highlight">конкуренты внедряют системы продаж</span>{" "}
+                и забирают ваших клиентов.
+              </p>
+            </div>
           </div>
         </div>
       </Section>
