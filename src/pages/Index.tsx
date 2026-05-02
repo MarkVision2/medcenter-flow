@@ -358,18 +358,56 @@ const Index = () => {
 
       {/* 7. СКЕПСИС */}
       <Section tone="muted">
-        <div className="rounded-2xl border-2 border-destructive/70 bg-background p-6 sm:p-8">
-          <h2 className="text-center text-2xl font-extrabold sm:text-3xl">Никакого подвоха нет.</h2>
-          <p className="mt-4 text-center text-base leading-relaxed sm:text-lg">
-            Мы проводим консультации, чтобы показать <span className="font-bold">вам свой</span> метод
-            ежедневного привлечения платёжеспособных клиентов.
-          </p>
-          <p className="mt-4 text-center text-base leading-relaxed sm:text-lg">
-            Если после консультации вы захотите, <span className="font-bold">чтобы мы помогли</span> вам увеличить выручку
-            с помощью моего метода то сможем обсудить условия сотрудничества. Консультация вас ни к чему не обязывает.
-          </p>
-          <p className="mt-5 text-center text-lg font-bold sm:text-xl">Да-да, нет-нет.</p>
-          <p className="mt-2 text-center text-lg font-bold sm:text-xl">ВСЁ по ЧЕСТНОМУ 🤝</p>
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-background p-6 shadow-lg sm:p-8">
+          {/* Декор */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-banner/5 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-accent/5 blur-3xl" />
+
+          <div className="relative">
+            {/* Иконка-щит */}
+            <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-banner to-banner/80 shadow-lg shadow-banner/30">
+              <ShieldCheck className="h-7 w-7 text-banner-foreground" strokeWidth={2.5} />
+            </div>
+
+            <div className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full bg-banner/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-banner">
+              Честно и&nbsp;прозрачно
+            </div>
+
+            <h2 className="text-center text-2xl font-extrabold leading-tight sm:text-3xl">
+              Никакого подвоха нет
+            </h2>
+
+            <div className="mt-6 space-y-4">
+              <div className="flex gap-3 rounded-xl border border-border/60 bg-muted/40 p-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-banner/10 text-banner">
+                  <Check className="h-4 w-4" strokeWidth={3} />
+                </div>
+                <p className="text-sm leading-relaxed sm:text-base">
+                  Мы проводим консультации, чтобы показать <span className="font-bold">вам свой</span> метод
+                  ежедневного привлечения платёжеспособных клиентов.
+                </p>
+              </div>
+
+              <div className="flex gap-3 rounded-xl border border-border/60 bg-muted/40 p-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-banner/10 text-banner">
+                  <Check className="h-4 w-4" strokeWidth={3} />
+                </div>
+                <p className="text-sm leading-relaxed sm:text-base">
+                  Если после консультации вы захотите, <span className="font-bold">чтобы мы помогли</span> увеличить
+                  выручку с&nbsp;помощью моего метода — обсудим условия сотрудничества.{" "}
+                  <span className="font-semibold">Консультация ни&nbsp;к&nbsp;чему не&nbsp;обязывает.</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Финальный аккорд */}
+            <div className="mt-6 flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-banner to-banner/85 px-5 py-4 text-banner-foreground shadow-md">
+              <Handshake className="h-6 w-6 shrink-0" />
+              <p className="text-base font-extrabold uppercase tracking-wide sm:text-lg">
+                Да-да, нет-нет. Всё по&nbsp;честному
+              </p>
+            </div>
+          </div>
         </div>
       </Section>
 
