@@ -1,4 +1,4 @@
-import { Check, ArrowRight, AlertTriangle, Phone, MapPin, Square, X, TrendingUp, Wallet, Sparkles, Gift, MessageCircle, Map, BarChart3, PhoneCall, BadgeCheck, Megaphone, Inbox, Target, UserPlus, Receipt, Clock, Flame, HeartPulse, Stethoscope, Activity, PlayCircle, Crown } from "lucide-react";
+import { Check, ArrowRight, AlertTriangle, Phone, MapPin, Square, X, TrendingUp, TrendingDown, Wallet, Sparkles, Gift, MessageCircle, Map, BarChart3, PhoneCall, BadgeCheck, Megaphone, Inbox, Target, UserPlus, Receipt, Clock, Flame, HeartPulse, Stethoscope, Activity, PlayCircle, Crown } from "lucide-react";
 import Section from "@/components/landing/Section";
 import Banner from "@/components/landing/Banner";
 import WhatsAppButton from "@/components/landing/WhatsAppButton";
