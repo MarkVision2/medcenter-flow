@@ -430,20 +430,13 @@ const Index = () => {
           записывайтесь на&nbsp;диагностику.
         </p>
 
-        {/* Большая плашка с ценой */}
+        {/* Большая плашка с CTA */}
         <div className="mt-7 relative overflow-hidden rounded-3xl border-2 border-cta-orange/40 bg-card p-6 shadow-xl sm:p-8">
           <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-cta-orange/15 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-accent/10 blur-3xl" />
 
           <div className="relative text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-              Диагностика стоит
-            </p>
-            <p className="mt-2 font-black leading-none tracking-tight text-cta-orange text-6xl sm:text-7xl">
-              10 000 ₸
-            </p>
-
-            <div className="mx-auto mt-6 max-w-md text-base leading-relaxed text-foreground/85 sm:text-lg">
+            <div className="mx-auto max-w-md text-base leading-relaxed text-foreground/85 sm:text-lg">
               Мы&nbsp;разберём вашу текущую ситуацию и&nbsp;дадим готовый пошаговый план: где
               вы&nbsp;теряете деньги прямо сейчас и&nbsp;как увеличить количество первичных пациентов
               <span className="font-semibold"> без дополнительных расходов на&nbsp;рекламу.</span>
