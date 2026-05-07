@@ -617,59 +617,79 @@ const Index = () => {
 
       {/* 13. ВЫБОР — ДВЕ ДОРОГИ */}
       <Section tone="muted">
-        <h2 className="text-center text-4xl font-black uppercase tracking-tight sm:text-5xl">
-          Две дороги:
+        <h2 className="text-center text-3xl font-black uppercase tracking-tight sm:text-5xl">
+          У&nbsp;вас два пути
         </h2>
+        <p className="mx-auto mt-3 max-w-md text-center text-sm text-muted-foreground sm:text-base">
+          Какой выберете для своей клиники?
+        </p>
 
-        <div className="mt-4 flex justify-center text-5xl sm:text-6xl" aria-hidden="true">
-          🛣️
-        </div>
-
-        <div className="mt-2 grid grid-cols-2 gap-3 sm:gap-4">
-          <div className="rounded-3xl bg-road-bad p-5 text-road-bad-foreground shadow-lg sm:p-6">
-            <div className="flex justify-center text-5xl sm:text-6xl" aria-hidden="true">
-              🤷‍♂️
+        <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+          {/* Плохой путь */}
+          <div className="relative overflow-hidden rounded-3xl bg-road-bad p-6 text-road-bad-foreground shadow-xl sm:p-7">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
+                  <TrendingDown className="h-6 w-6" strokeWidth={2.5} />
+                </div>
+                <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">
+                  Путь&nbsp;1
+                </div>
+              </div>
+              <h3 className="mt-4 text-xl font-black uppercase leading-tight sm:text-2xl">
+                Оставить как&nbsp;есть
+              </h3>
+              <ul className="mt-5 space-y-3.5 text-[15px] sm:text-base">
+                {[
+                  "Закрыть страницу и забыть",
+                  "Продолжать терять пациентов и сливать рекламный бюджет",
+                  "Смотреть, как коллеги забирают ваш рынок",
+                  "Через год — те же проблемы, но дороже",
+                ].map((t) => (
+                  <li key={t} className="flex gap-2.5">
+                    <X className="mt-0.5 h-5 w-5 shrink-0" strokeWidth={3} />
+                    <span className="leading-snug">{t}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <h3 className="mt-3 text-center text-xl font-black uppercase leading-tight sm:text-2xl">
-              Первая<br />дорога:
-            </h3>
-            <ul className="mt-5 space-y-4 text-base sm:text-lg">
-              {[
-                "Закрыть эту страницу",
-                "Дальше работать без потока пациентов",
-                "Через год жалеть о потерянном времени",
-              ].map((t) => (
-                <li key={t} className="flex gap-2">
-                  <X className="mt-1 h-4 w-4 shrink-0" strokeWidth={3} />
-                  <span className="leading-snug">{t}</span>
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <div className="rounded-3xl bg-road-good p-5 text-road-good-foreground shadow-lg sm:p-6">
-            <div className="flex justify-center text-5xl sm:text-6xl" aria-hidden="true">
-              🐺
+          {/* Хороший путь */}
+          <div className="relative overflow-hidden rounded-3xl bg-road-good p-6 text-road-good-foreground shadow-xl sm:p-7">
+            <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-highlight/20 blur-2xl" />
+            <div className="absolute right-3 top-3 rounded-full bg-highlight px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-foreground shadow">
+              Рекомендуем
             </div>
-            <h3 className="mt-3 text-center text-xl font-black uppercase leading-tight sm:text-2xl">
-              Вторая дорога<br />(для&nbsp;волков):
-            </h3>
-            <ul className="mt-5 space-y-4 text-base sm:text-lg">
-              {[
-                "Пройти диагностику",
-                "Узнать свои слабые места",
-                "Зарабатывать как лучшая клиника",
-              ].map((t, i) => (
-                <li key={t} className="flex gap-2">
-                  <span
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white/90 text-sm font-black text-road-good shadow-sm"
-                  >
-                    {i + 1}
-                  </span>
-                  <span className="leading-snug">{t}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="relative">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
+                  <TrendingUp className="h-6 w-6" strokeWidth={2.5} />
+                </div>
+                <div className="text-[10px] font-bold uppercase tracking-widest opacity-80">
+                  Путь&nbsp;2
+                </div>
+              </div>
+              <h3 className="mt-4 text-xl font-black uppercase leading-tight sm:text-2xl">
+                Построить систему
+              </h3>
+              <ul className="mt-5 space-y-3.5 text-[15px] sm:text-base">
+                {[
+                  "Записаться на диагностику",
+                  "Увидеть, где клиника теряет деньги",
+                  "Получить пошаговый план роста выручки",
+                  "Стать клиникой №1 в своём городе",
+                ].map((t, i) => (
+                  <li key={t} className="flex gap-2.5">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/95 text-[11px] font-black text-road-good shadow-sm">
+                      {i + 1}
+                    </span>
+                    <span className="leading-snug">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </Section>
