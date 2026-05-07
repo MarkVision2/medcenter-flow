@@ -414,40 +414,51 @@ const Index = () => {
         </div>
       </Section>
 
-      {/* 8. ЦЕНА ДИАГНОСТИКИ */}
+      {/* 8. ПРИГЛАШЕНИЕ НА ДИАГНОСТИКУ */}
       <Section>
         <h2 className="text-center text-2xl font-extrabold leading-tight sm:text-3xl">
-          Вы&nbsp;спросите:{" "}
-          <span className="text-accent-deep">сколько это стоит?</span>
+          Готовы увидеть, где{" "}
+          <span className="text-accent-deep">ваша клиника теряет деньги?</span>
         </h2>
         <p className="mx-auto mt-4 max-w-md text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Я&nbsp;не&nbsp;знаю, сколько стоит решить именно вашу задачу — пока не&nbsp;увижу вашу ситуацию.
-          Возможно, достаточно подправить пару вещей. А&nbsp;возможно — выстроить всю систему под&nbsp;ключ.
+          На&nbsp;бесплатной диагностике разберём вашу ситуацию и&nbsp;покажем точки роста —
+          возможно, достаточно подправить пару вещей, а&nbsp;возможно — выстроить систему под&nbsp;ключ.
         </p>
 
-        <p className="mx-auto mt-4 max-w-md text-center text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Если хотите оставить конкурентов позади и&nbsp;кратно увеличить выручку клиники —
-          записывайтесь на&nbsp;диагностику.
-        </p>
+        {/* CTA-карточка */}
+        <div className="mt-8 relative overflow-hidden rounded-3xl bg-gradient-to-br from-card to-muted/40 border border-cta-orange/30 p-6 shadow-2xl sm:p-9">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cta-orange/15 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-accent/10 blur-3xl" />
 
-        {/* Большая плашка с CTA */}
-        <div className="mt-7 relative overflow-hidden rounded-3xl border-2 border-cta-orange/40 bg-card p-6 shadow-xl sm:p-8">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-cta-orange/15 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-accent/10 blur-3xl" />
-
-          <div className="relative text-center">
-            <div className="mx-auto max-w-md text-base leading-relaxed text-foreground/85 sm:text-lg">
-              Мы&nbsp;разберём вашу текущую ситуацию и&nbsp;дадим готовый пошаговый план: где
-              вы&nbsp;теряете деньги прямо сейчас и&nbsp;как увеличить количество первичных пациентов
-              <span className="font-semibold"> без дополнительных расходов на&nbsp;рекламу.</span>
+          <div className="relative">
+            <div className="mx-auto flex w-fit items-center gap-2 rounded-full bg-cta-orange/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-cta-orange">
+              <Sparkles className="h-3.5 w-3.5" />
+              Что вы получите
             </div>
 
-            <div className="mx-auto mt-5 flex w-fit items-center gap-2 rounded-full bg-destructive/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-destructive">
+            <ul className="mx-auto mt-6 max-w-md space-y-3.5">
+              {[
+                "Аудит, где именно вы теряете пациентов и деньги",
+                "Пошаговый план роста выручки без увеличения бюджета",
+                "Конкретные действия на ближайшие 30 дней",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15">
+                    <Check className="h-3.5 w-3.5 text-accent-deep" strokeWidth={3} />
+                  </div>
+                  <span className="text-base leading-relaxed text-foreground/85 sm:text-lg">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mx-auto mt-7 flex w-fit items-center gap-2 rounded-full bg-destructive/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-destructive">
               <AlertTriangle className="h-3.5 w-3.5" />
               Количество мест ограничено
             </div>
 
-            <div className="mt-6">
+            <div className="mt-5">
               <WhatsAppButton label="Забронировать диагностику" />
             </div>
           </div>
