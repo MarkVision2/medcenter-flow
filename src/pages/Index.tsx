@@ -29,10 +29,6 @@ const Index = () => {
           без увеличения расходов на&nbsp;рекламу.
         </p>
 
-        <p className="mt-4 text-center text-sm italic text-muted-foreground">
-          Вы&nbsp;можете посмотреть видео или прочитать статью ниже
-        </p>
-
         {/* YouTube embed */}
         <div className="mt-4">
           <div className="relative overflow-hidden rounded-2xl border bg-card shadow-lg aspect-video">
