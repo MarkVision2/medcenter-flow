@@ -363,53 +363,71 @@ const Index = () => {
 
       {/* 7. ЗНАКОМСТВО — ЮРИЙ */}
       <Section tone="muted">
-        <div className="mx-auto mb-5 flex w-fit items-center gap-2 rounded-full bg-accent-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-deep">
+        <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full bg-accent-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-deep">
           <BadgeCheck className="h-3.5 w-3.5" />
           Эксперт по росту медицинских клиник
         </div>
 
-        <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] md:gap-10">
-          <div className="relative mx-auto w-full max-w-sm md:mx-0">
-            <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-accent/20 via-transparent to-accent-deep/20 blur-xl" aria-hidden="true" />
-            <div className="relative overflow-hidden rounded-2xl border bg-card shadow-xl">
-              <img
-                src={yuriPhoto}
-                alt="Юрий — эксперт по росту медицинских клиник"
-                className="block w-full object-cover"
-              />
-              <div className="border-t bg-card px-4 py-3">
-                <p className="text-sm font-bold leading-tight">Юрий</p>
-                <p className="text-xs text-muted-foreground">
-                  Эксперт по росту медицинских клиник
-                </p>
+        <div className="relative overflow-hidden rounded-3xl border bg-card shadow-xl">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-accent-deep/10 blur-3xl" />
+
+          <div className="relative grid items-center gap-6 p-5 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] md:gap-10 md:p-8">
+            {/* Фото */}
+            <div className="relative mx-auto w-full max-w-[280px] md:mx-0 md:max-w-none">
+              <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-accent/30 via-transparent to-accent-deep/30 blur-lg" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-2xl border bg-card shadow-lg">
+                <img
+                  src={yuriPhoto}
+                  alt="Юрий — эксперт по росту медицинских клиник"
+                  className="block w-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-accent-deep px-4 py-1.5 text-xs font-bold text-white shadow-lg whitespace-nowrap">
+                Юрий · 5+ лет в нише
               </div>
             </div>
-          </div>
 
-          <div>
-            <h2 className="text-center text-2xl font-bold leading-tight sm:text-3xl md:text-left">
-              Меня зовут{" "}
-              <span className="text-accent-deep">Юрий</span>
-            </h2>
+            {/* Текст */}
+            <div className="pt-4 md:pt-0">
+              <h2 className="text-center text-2xl font-extrabold leading-tight sm:text-3xl md:text-left">
+                Меня зовут{" "}
+                <span className="text-accent-deep">Юрий</span>
+              </h2>
+              <p className="mt-2 text-center text-sm text-muted-foreground md:text-left">
+                Помогаю медицинским клиникам выстраивать систему привлечения пациентов
+              </p>
 
-            <p className="mt-4 text-base leading-relaxed sm:text-lg">
-              Последние{" "}
-              <span className="font-semibold">5 лет</span> я&nbsp;занимался именно этим: выстраивал систему,
-              которая позволяет при тех&nbsp;же вложениях в&nbsp;рекламный бюджет увеличивать выручку клиники.
-              Мы&nbsp;с&nbsp;командой прогнали десятки кейсов разных клиник и&nbsp;помогли сделать окупаемость в{" "}
-              <span className="font-semibold text-accent-deep">3, 5 и&nbsp;даже 10&nbsp;раз</span>.
-            </p>
+              {/* Метрики */}
+              <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+                {[
+                  { v: "5+", l: "лет в нише" },
+                  { v: "50+", l: "клиник" },
+                  { v: "x3–x10", l: "окупаемость" },
+                ].map((m) => (
+                  <div key={m.l} className="rounded-2xl border bg-background/60 px-2 py-3 text-center backdrop-blur">
+                    <div className="text-lg font-black text-accent-deep sm:text-xl">{m.v}</div>
+                    <div className="mt-0.5 text-[10px] uppercase tracking-wider text-muted-foreground sm:text-xs">{m.l}</div>
+                  </div>
+                ))}
+              </div>
 
-            <p className="mt-4 text-base leading-relaxed sm:text-lg">
-              Я&nbsp;беру на&nbsp;себя ответственность за&nbsp;каждый этап. Точно знаю, на&nbsp;что
-              смотреть, чтобы больше пациентов доходило до&nbsp;клиники, записывалось на&nbsp;лечение
-              и&nbsp;оставалось с&nbsp;вами на&nbsp;долгие годы.
-            </p>
-
-            <p className="mt-4 text-base leading-relaxed sm:text-lg">
-              С&nbsp;этой системой вы&nbsp;перестанете терять деньги, а&nbsp;каждая инвестиция
-              в&nbsp;маркетинг начнёт работать на&nbsp;результат.
-            </p>
+              {/* Преимущества */}
+              <ul className="mt-6 space-y-3">
+                {[
+                  "Выстраиваю систему, которая увеличивает выручку клиники без роста бюджета на рекламу",
+                  "Беру ответственность за каждый этап — от рекламы до прихода пациента в клинику",
+                  "Знаю, на что смотреть, чтобы пациенты доходили, записывались на лечение и оставались надолго",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15">
+                      <Check className="h-3.5 w-3.5 text-accent-deep" strokeWidth={3} />
+                    </div>
+                    <span className="text-[15px] leading-relaxed text-foreground/85 sm:text-base">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </Section>
