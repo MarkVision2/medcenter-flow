@@ -1,1 +1,7 @@
-project_id = "hsobbdzachgrlbplqavc"
+project_id = "sfmetefxxvmxsdpyjbbm"
+
+[functions.meta-capi-lead]
+verify_jwt = false
+
+[functions.submit-diagnostic-lead]
+verify_jwt = false

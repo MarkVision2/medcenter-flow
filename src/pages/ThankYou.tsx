@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle2, ArrowLeft, Phone } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CalendarCheck,
+  Check,
+  CheckCircle2,
+  Clock3,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const WHATSAPP_NUMBER = "77472842595";
@@ -10,8 +20,6 @@ const FALLBACK_MESSAGE =
 interface LeadData {
   name?: string;
   phone?: string;
-  clinic?: string;
-  niche?: string;
 }
 
 const WhatsAppIcon = () => (
@@ -24,7 +32,7 @@ const ThankYou = () => {
   const [lead, setLead] = useState<LeadData | null>(null);
 
   useEffect(() => {
-    document.title = "Заявка принята — Система «Врач на миллион»";
+    document.title = "Заявка принята — MarkVision AI";
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.setAttribute(
@@ -41,95 +49,212 @@ const ThankYou = () => {
   }, []);
 
   const whatsappHref = useMemo(() => {
-    const lines = ["Добрый день! Я оставил заявку на диагностику за 9 900.", ""];
+    const lines = ["Добрый день! Я оставил заявку на диагностику клиники.", ""];
     if (lead?.name) lines.push(`Имя: ${lead.name}`);
     if (lead?.phone) lines.push(`Телефон: ${lead.phone}`);
-    if (lead?.clinic) lines.push(`Клиника: ${lead.clinic}`);
-    if (lead?.niche) lines.push(`Ниша: ${lead.niche}`);
     const text = lead ? lines.join("\n") : FALLBACK_MESSAGE;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   }, [lead]);
 
+  const nextSteps = [
+    {
+      icon: Phone,
+      title: "Проверю заявку",
+      text: "Посмотрю данные и свяжусь с вами лично.",
+    },
+    {
+      icon: CalendarCheck,
+      title: "Подтвердим запись",
+      text: "Согласуем удобное время диагностики.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Разберём клинику",
+      text: "Найдём, где теряются заявки, пациенты и деньги.",
+    },
+  ];
+
   return (
-    <main className="min-h-screen bg-background text-foreground antialiased">
-      <section className="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center px-5 py-12 text-center">
-        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-accent/15 ring-8 ring-accent/5">
-          <CheckCircle2 className="h-12 w-12 text-accent" strokeWidth={2.2} />
-        </div>
+    <main className="relative min-h-screen overflow-hidden bg-[#f6f8f7] text-foreground antialiased">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(224,245,240,0.9)_0%,rgba(246,248,247,1)_46%,rgba(255,255,255,1)_100%)]" />
+        <div
+          className="absolute inset-0 opacity-[0.045]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, hsl(var(--accent-deep)) 1px, transparent 1px)",
+            backgroundSize: "26px 26px",
+          }}
+        />
+      </div>
 
-        <h1 className="mt-6 text-3xl font-extrabold leading-tight sm:text-4xl">
-          Заявка принята!
-        </h1>
-
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Благодарим за оставленную заявку на диагностику медицинской клиники.
-          Мы свяжемся с вами в рабочее время для подтверждения записи.
-        </p>
-
-        {lead && (
-          <div className="mt-6 w-full rounded-2xl border bg-muted/40 p-5 text-left">
-            <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-              Ваши данные
-            </p>
-            <dl className="mt-3 space-y-2 text-sm">
-              {lead.name && (
-                <div className="flex justify-between gap-4">
-                  <dt className="text-muted-foreground">Имя</dt>
-                  <dd className="font-medium text-right">{lead.name}</dd>
-                </div>
-              )}
-              {lead.phone && (
-                <div className="flex justify-between gap-4">
-                  <dt className="text-muted-foreground">Телефон</dt>
-                  <dd className="font-medium text-right">{lead.phone}</dd>
-                </div>
-              )}
-              {lead.clinic && (
-                <div className="flex justify-between gap-4">
-                  <dt className="text-muted-foreground">Клиника</dt>
-                  <dd className="font-medium text-right">{lead.clinic}</dd>
-                </div>
-              )}
-              {lead.niche && (
-                <div className="flex justify-between gap-4">
-                  <dt className="text-muted-foreground">Ниша</dt>
-                  <dd className="font-medium text-right">{lead.niche}</dd>
-                </div>
-              )}
-            </dl>
-          </div>
-        )}
-
-        <div className="mt-8 w-full rounded-2xl border-2 border-accent/30 bg-accent/5 p-5">
-          <p className="text-base font-semibold">Хотите ускорить запись?</p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Напишите нам в WhatsApp — данные заявки уже подставлены в сообщение,
-            достаточно нажать «Отправить».
-          </p>
-          <Button
-            asChild
-            variant="whatsapp"
-            size="cta"
-            className="mt-4 w-full font-semibold whitespace-normal text-center"
+      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-5 sm:px-6 sm:py-8 lg:justify-center">
+        <div className="flex items-center justify-between gap-3">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white/80 px-3 py-2 text-xs font-bold text-accent-deep shadow-sm backdrop-blur transition hover:bg-white sm:px-4"
           >
-            <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon />
-              <span>Написать в WhatsApp</span>
-            </a>
-          </Button>
+            <ArrowLeft className="h-4 w-4" />
+            Вернуться на сайт
+          </Link>
+          <span className="hidden items-center gap-2 rounded-full bg-accent-soft px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-accent-deep sm:inline-flex">
+            <ShieldCheck className="h-4 w-4" />
+            MarkVision AI
+          </span>
         </div>
 
-        <Button asChild variant="ghost" className="mt-6">
-          <Link to="/">
-            <ArrowLeft className="h-4 w-4" />
-            Вернуться на главную
-          </Link>
-        </Button>
+        <div className="grid flex-1 items-center gap-8 py-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 lg:py-10">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-accent-deep shadow-sm">
+              <CheckCircle2 className="h-4 w-4" />
+              Заявка принята
+            </div>
 
-        <p className="mt-8 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <Phone className="h-3.5 w-3.5" />
-          WhatsApp: +7 747 284 25 95
-        </p>
+            <h1 className="mt-5 max-w-3xl text-[42px] font-black leading-[0.96] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Спасибо. Диагностика{" "}
+              <span className="text-accent-deep">почти забронирована</span>
+            </h1>
+
+            <p className="mt-5 max-w-2xl text-lg font-medium leading-relaxed text-foreground/70 sm:text-2xl">
+              Я свяжусь с вами в ближайшее время, подтвержу запись и уточню
+              пару деталей по вашей медицинской клинике.
+            </p>
+
+            <div className="mt-7 grid gap-3 sm:grid-cols-3">
+              {nextSteps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div
+                    key={step.title}
+                    className="relative overflow-hidden rounded-2xl border border-accent/15 bg-white p-4 shadow-sm"
+                  >
+                    <span className="absolute right-4 top-3 text-5xl font-black leading-none text-accent-soft">
+                      {index + 1}
+                    </span>
+                    <span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-accent-soft text-accent-deep">
+                      <Icon className="h-5 w-5" strokeWidth={2.4} />
+                    </span>
+                    <p className="relative mt-4 text-base font-extrabold leading-tight">
+                      {step.title}
+                    </p>
+                    <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {step.text}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Button
+                asChild
+                variant="whatsapp"
+                size="cta"
+                className="min-h-14 flex-1 rounded-2xl text-base font-extrabold shadow-xl shadow-accent/20 sm:text-lg"
+              >
+                <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon />
+                  <span>Написать в WhatsApp</span>
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="cta"
+                className="min-h-14 rounded-2xl border-accent/20 bg-white px-6 font-bold text-accent-deep hover:bg-accent-soft"
+              >
+                <Link to="/">
+                  <ArrowLeft className="h-4 w-4" />
+                  На главную
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          <aside className="space-y-4">
+            <div className="rounded-[1.75rem] border border-accent/15 bg-white p-5 shadow-xl shadow-accent/10 sm:p-6">
+              <div className="flex items-start gap-4">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-deep text-white shadow-lg shadow-accent/20">
+                  <Check className="h-7 w-7" strokeWidth={3} />
+                </span>
+                <div>
+                  <p className="text-2xl font-black leading-tight">
+                    Мы получили вашу заявку
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Следующий шаг: коротко подтвердить контакт и выбрать время
+                    диагностики.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-accent/20 bg-accent-soft/60 p-4">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-accent-deep">
+                    <Clock3 className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="font-extrabold leading-snug text-accent-deep">
+                      Обычно отвечаю в ближайшее рабочее время
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-foreground/65">
+                      Если заявка срочная, WhatsApp ускорит подтверждение.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {lead && (
+                <div className="mt-5 rounded-2xl bg-muted/45 p-4">
+                  <p className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
+                    Данные заявки
+                  </p>
+                  <dl className="mt-3 space-y-2 text-sm">
+                    {lead.name && (
+                      <div className="flex justify-between gap-4">
+                        <dt className="text-muted-foreground">Имя</dt>
+                        <dd className="text-right font-bold">{lead.name}</dd>
+                      </div>
+                    )}
+                    {lead.phone && (
+                      <div className="flex justify-between gap-4">
+                        <dt className="text-muted-foreground">Телефон</dt>
+                        <dd className="text-right font-bold">{lead.phone}</dd>
+                      </div>
+                    )}
+                  </dl>
+                </div>
+              )}
+            </div>
+
+            <div className="rounded-[1.75rem] bg-accent-deep p-5 text-white shadow-xl shadow-accent/20 sm:p-6">
+              <p className="text-xs font-extrabold uppercase tracking-wider text-white/65">
+                Что подготовить
+              </p>
+              <ul className="mt-4 space-y-3 text-sm font-semibold leading-relaxed text-white/90">
+                <li className="flex gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-highlight" />
+                  Текущие источники заявок и рекламы.
+                </li>
+                <li className="flex gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-highlight" />
+                  Примерную стоимость заявки и записи.
+                </li>
+                <li className="flex gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-highlight" />
+                  Где сейчас чаще всего теряются пациенты.
+                </li>
+              </ul>
+            </div>
+
+            <p className="flex items-center justify-center gap-2 text-sm font-semibold text-muted-foreground">
+              <Phone className="h-4 w-4" />
+              WhatsApp: +7 747 284 25 95
+            </p>
+          </aside>
+        </div>
       </section>
     </main>
   );
