@@ -52,15 +52,6 @@ const formSchema = z.object({
 });
 
 type FieldErrors = Partial<Record<"name" | "phone" | "clinic" | "niche" | "agreement", string>>;
-type MetaPixel = (
-  action: string,
-  eventName: string,
-  params?: Record<string, unknown>,
-  options?: Record<string, unknown>,
-) => void;
-type LeadResponse = {
-  event_id?: string;
-};
 
 const getCookie = (name: string): string | undefined => {
   if (typeof document === "undefined") return undefined;
@@ -171,7 +162,7 @@ const DiagnosticForm = ({ ctaId, ctaName }: DiagnosticFormProps = {}) => {
           : `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
       // Browser Pixel (with eventID for deduplication)
-      const fbq = (window as Window & { fbq?: MetaPixel }).fbq;
+      const fbq = (window as any).fbq;
       if (typeof fbq === "function") {
         fbq(
           "track",
@@ -229,7 +220,7 @@ const DiagnosticForm = ({ ctaId, ctaName }: DiagnosticFormProps = {}) => {
           phone: parsed.data.phone,
           clinic: parsed.data.clinic,
           niche: parsed.data.niche,
-              event_id: (data as LeadResponse | null)?.event_id ?? eventId,
+          event_id: (data as any)?.event_id ?? eventId,
         }),
       );
 

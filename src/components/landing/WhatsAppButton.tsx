@@ -13,15 +13,6 @@ interface WhatsAppButtonProps {
   variant?: "whatsapp" | "cta-orange";
 }
 
-type MetaPixel = (
-  action: string,
-  eventName: string,
-  params?: Record<string, unknown>,
-  options?: Record<string, unknown>,
-) => void;
-type Gtag = (command: string, eventName: string, params?: Record<string, unknown>) => void;
-type DataLayerEvent = Record<string, unknown>;
-
 const WhatsAppIcon = () => (
   <svg
     viewBox="0 0 24 24"
@@ -57,13 +48,13 @@ const WhatsAppButton = ({
         : `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
     // Browser Pixel (with eventID for deduplication)
-    const fbq = (window as Window & { fbq?: MetaPixel }).fbq;
+    const fbq = (window as any).fbq;
     if (typeof fbq === "function") {
       fbq("track", "Lead", {}, { eventID: eventId });
     }
 
     // Google Analytics (gtag.js) — событие конверсии
-    const gtag = (window as Window & { gtag?: Gtag }).gtag;
+    const gtag = (window as any).gtag;
     if (typeof gtag === "function") {
       gtag("event", "generate_lead", {
         event_category: "engagement",
@@ -79,8 +70,7 @@ const WhatsAppButton = ({
     }
 
     // Google Tag Manager — push в dataLayer для триггеров в GTM
-    const trackingWindow = window as Window & { dataLayer?: DataLayerEvent[] };
-    const dataLayer = (trackingWindow.dataLayer = trackingWindow.dataLayer || []);
+    const dataLayer = ((window as any).dataLayer = (window as any).dataLayer || []);
     dataLayer.push({
       event: "whatsapp_click",
       event_id: eventId,
