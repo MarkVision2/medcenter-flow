@@ -6,11 +6,6 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const DEFAULT_CRM_WEBHOOK_URL =
-  "https://mekwfbqmsqiborjdrjxc.supabase.co/functions/v1/lead-intake";
-const DEFAULT_CRM_PROJECT_ID = "cceb9a86-687b-4417-9b4e-d106bd8cc79c";
-const DEFAULT_CRM_PROJECT_TOKEN = "MkcXbUBfd7ObDBy7";
-
 interface LeadInput {
   name?: string;
   phone?: string;
@@ -62,6 +57,8 @@ async function sendTelegram(params: {
   chatId: string;
   name: string;
   phone: string;
+  clinic: string;
+  niche: string;
   ctaId: number | null;
   ctaName: string | null;
   utm: Record<string, string>;
@@ -82,22 +79,15 @@ async function sendTelegram(params: {
           .join("\n")
       : "";
 
-  let pageLine = "";
-  if (params.pageUrl) {
-    let host = params.pageUrl;
-    try {
-      host = new URL(params.pageUrl).host;
-    } catch {
-      /* keep raw */
-    }
-    pageLine = `\n\n🔗 Страница: <a href="${e(params.pageUrl)}">${e(host)}</a>`;
-  }
+  const pageLine = params.pageUrl ? `\n\n🔗 <a href="${e(params.pageUrl)}">Страница</a>` : "";
 
   const text =
     `🆕 <b>Заявка на диагностику</b>\n` +
-    `\n${ctaLine}\n\n` +
+    `${ctaLine}\n\n` +
     `👤 <b>Имя:</b> ${e(params.name)}\n` +
-    `📞 <b>Телефон:</b> ${e(params.phone)}` +
+    `📞 <b>Телефон:</b> ${e(params.phone)}\n` +
+    `🏥 <b>Клиника:</b> ${e(params.clinic)}\n` +
+    `🩺 <b>Ниша:</b> ${e(params.niche)}` +
     utmBlock +
     pageLine;
 
@@ -115,70 +105,8 @@ async function sendTelegram(params: {
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
     console.error("Telegram sendMessage failed", res.status, data);
-  } else {
-    console.log("Telegram sendMessage ok", data?.result?.message_id);
   }
   return data;
-}
-
-async function sendCrmLead(params: {
-  webhookUrl: string;
-  token: string;
-  projectId: string;
-  name: string;
-  phone: string;
-  clinic: string;
-  niche: string;
-  ctaId: number | null;
-  ctaName: string | null;
-  utm: Record<string, string | null>;
-  referrer: string | null;
-  landingUrl: string | null;
-  fbc: string | null;
-  fbp: string | null;
-  eventId: string;
-}) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 5000);
-
-  const payload = {
-    token: params.token,
-    project_id: params.projectId,
-    name: params.name,
-    phone: params.phone,
-    service: "Диагностика медицинской клиники",
-    city: "Не указано",
-    source: "site",
-    cta_id: params.ctaId,
-    cta_name: params.ctaName,
-    referrer: params.referrer,
-    landing_url: params.landingUrl,
-    fbc: params.fbc,
-    fbp: params.fbp,
-    utm_source: params.utm.utm_source ?? undefined,
-    utm_medium: params.utm.utm_medium ?? undefined,
-    utm_campaign: params.utm.utm_campaign ?? undefined,
-    utm_content: params.utm.utm_content ?? undefined,
-    utm_term: params.utm.utm_term ?? undefined,
-  };
-
-  try {
-    const res = await fetch(params.webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) {
-      console.error("CRM lead-intake failed", res.status, data);
-      return { ok: false, status: res.status, data };
-    }
-    console.log("CRM lead-intake ok", data?.leadId ?? data);
-    return { ok: true, status: res.status, data };
-  } finally {
-    clearTimeout(timeout);
-  }
 }
 
 Deno.serve(async (req) => {
@@ -191,12 +119,6 @@ Deno.serve(async (req) => {
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     const PIXEL_ID = Deno.env.get("META_PIXEL_ID");
     const ACCESS_TOKEN = Deno.env.get("META_CAPI_ACCESS_TOKEN");
-    const CRM_WEBHOOK_URL =
-      Deno.env.get("CRM_LEAD_WEBHOOK_URL") || DEFAULT_CRM_WEBHOOK_URL;
-    const CRM_PROJECT_ID =
-      Deno.env.get("CRM_PROJECT_ID") || DEFAULT_CRM_PROJECT_ID;
-    const CRM_PROJECT_TOKEN =
-      Deno.env.get("CRM_PROJECT_TOKEN") || DEFAULT_CRM_PROJECT_TOKEN;
 
     if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
       return new Response(
@@ -292,6 +214,8 @@ Deno.serve(async (req) => {
           chatId: TELEGRAM_CHAT_ID,
           name,
           phone,
+          clinic,
+          niche,
           ctaId,
           ctaName,
           utm: {
@@ -308,32 +232,6 @@ Deno.serve(async (req) => {
       }
     } else {
       console.warn("Telegram secrets not configured; skipping group notification");
-    }
-
-    let crmResult: unknown = { skipped: true };
-    if (CRM_WEBHOOK_URL) {
-      try {
-        crmResult = await sendCrmLead({
-          webhookUrl: CRM_WEBHOOK_URL,
-          token: CRM_PROJECT_TOKEN,
-          projectId: CRM_PROJECT_ID,
-          name,
-          phone,
-          clinic,
-          niche,
-          ctaId,
-          ctaName,
-          utm,
-          referrer: body.referrer ?? null,
-          landingUrl: body.event_source_url ?? null,
-          fbc: body.fbc ?? null,
-          fbp: body.fbp ?? null,
-          eventId,
-        });
-      } catch (crmErr) {
-        console.error("CRM lead-intake exception", crmErr);
-        crmResult = { ok: false, error: crmErr instanceof Error ? crmErr.message : "Unknown error" };
-      }
     }
 
     let capiResult: unknown = { skipped: true };
@@ -396,7 +294,7 @@ Deno.serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ success: true, event_id: eventId, crm: crmResult, capi: capiResult }),
+      JSON.stringify({ success: true, event_id: eventId, capi: capiResult }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   } catch (err) {

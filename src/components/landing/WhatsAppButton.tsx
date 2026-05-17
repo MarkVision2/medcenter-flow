@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const WHATSAPP_NUMBER = "77472842595";
 const DEFAULT_MESSAGE =
@@ -11,6 +12,15 @@ interface WhatsAppButtonProps {
   fullWidth?: boolean;
   variant?: "whatsapp" | "cta-orange";
 }
+
+type MetaPixel = (
+  action: string,
+  eventName: string,
+  params?: Record<string, unknown>,
+  options?: Record<string, unknown>,
+) => void;
+type Gtag = (command: string, eventName: string, params?: Record<string, unknown>) => void;
+type DataLayerEvent = Record<string, unknown>;
 
 const WhatsAppIcon = () => (
   <svg
@@ -31,6 +41,73 @@ const WhatsAppButton = ({
 }: WhatsAppButtonProps) => {
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
 
+  const getCookie = (name: string): string | undefined => {
+    if (typeof document === "undefined") return undefined;
+    const match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+    return match ? decodeURIComponent(match[1]) : undefined;
+  };
+
+  const handleClick = () => {
+    if (typeof window === "undefined") return;
+
+    // Stable event_id so browser pixel and server CAPI events deduplicate.
+    const eventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `lead-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+    // Browser Pixel (with eventID for deduplication)
+    const fbq = (window as Window & { fbq?: MetaPixel }).fbq;
+    if (typeof fbq === "function") {
+      fbq("track", "Lead", {}, { eventID: eventId });
+    }
+
+    // Google Analytics (gtag.js) — событие конверсии
+    const gtag = (window as Window & { gtag?: Gtag }).gtag;
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        event_category: "engagement",
+        event_label: "whatsapp_button",
+        method: "WhatsApp",
+        value: 0,
+        currency: "KZT",
+      });
+      gtag("event", "click_whatsapp", {
+        event_category: "engagement",
+        event_label: "whatsapp_button",
+      });
+    }
+
+    // Google Tag Manager — push в dataLayer для триггеров в GTM
+    const trackingWindow = window as Window & { dataLayer?: DataLayerEvent[] };
+    const dataLayer = (trackingWindow.dataLayer = trackingWindow.dataLayer || []);
+    dataLayer.push({
+      event: "whatsapp_click",
+      event_id: eventId,
+      lead_source: "whatsapp_button",
+      lead_destination: "whatsapp",
+    });
+
+    // Server-side Conversions API (fire-and-forget, must not block navigation)
+    const fbp = getCookie("_fbp");
+    const fbc = getCookie("_fbc");
+
+    supabase.functions
+      .invoke("meta-capi-lead", {
+        body: {
+          event_id: eventId,
+          event_name: "Lead",
+          event_source_url: window.location.href,
+          user_agent: navigator.userAgent,
+          fbp,
+          fbc,
+        },
+      })
+      .catch((err) => {
+        console.error("Meta CAPI invoke failed", err);
+      });
+  };
+
   return (
     <Button
       asChild
@@ -42,7 +119,7 @@ const WhatsAppButton = ({
         className,
       )}
     >
-      <a href={href} target="_blank" rel="noopener noreferrer">
+      <a href={href} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
         <WhatsAppIcon />
         <span>{label}</span>
       </a>

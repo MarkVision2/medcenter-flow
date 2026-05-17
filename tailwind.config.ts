@@ -111,5 +111,5 @@ export default {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;
